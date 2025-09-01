@@ -18,6 +18,7 @@
     "@types/react-jss": "^10.0.0",
     "@uidotdev/usehooks": "2.4.1",
     "react": "0.0.0-experimental-bb6f0c8d-20250901",
+    "react-device-detect": "^2.2.3",
     "react-dom": "0.0.0-experimental-bb6f0c8d-20250901",
     "react-jss": "^10.10.0",
     "react-spring": "^10.0.1",

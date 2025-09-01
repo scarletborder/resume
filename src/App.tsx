@@ -5,6 +5,7 @@ import { useHover } from '@uidotdev/usehooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faBlogger } from '@fortawesome/free-brands-svg-icons';
+import { isMobile } from 'react-device-detect';
 
 const useStyles = createUseStyles({
   '@global': {
@@ -25,6 +26,14 @@ const useStyles = createUseStyles({
     background: '#fff',
     borderRadius: '12px',
     boxShadow: '0 8px 30px rgba(0,0,0,0.1)',
+  },
+  containerMobile: {
+    maxWidth: '100%',
+    margin: '20px 0',
+    padding: '10px 20px',
+    background: '#fff',
+    borderRadius: '8px',
+    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
   },
   header: {
     textAlign: 'center',
@@ -115,8 +124,15 @@ const useStyles = createUseStyles({
   },
 });
 
-const AnimatedCard = ({ children }: { children: React.ReactNode }) => {
+const AnimatedCard = ({ children, disableAnimation = false }: { children: React.ReactNode, disableAnimation?: boolean }) => {
   const classes = useStyles();
+  if (disableAnimation) {
+    return (
+      <div className={classes.card}>
+        {children}
+      </div>
+    );
+  }
   const [props, set] = useSpring(() => ({
     transform: 'scale(1)',
     boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
@@ -145,9 +161,10 @@ const AnimatedCard = ({ children }: { children: React.ReactNode }) => {
 // 主简历组件
 const App = () => {
   const classes = useStyles();
+  const isMobileDevice = isMobile;
 
   return (
-    <div className={classes.container}>
+    <div className={isMobileDevice ? classes.containerMobile : classes.container}>
       <header className={classes.header}>
         <h1 className={classes.name}>Songrujia</h1>
         <p className={classes.contact}>
@@ -159,7 +176,7 @@ const App = () => {
 
       <section className={classes.section}>
         <h2 className={classes.sectionTitle}>技术栈</h2>
-        <AnimatedCard>
+        <AnimatedCard disableAnimation={isMobileDevice}>
           <ul>
             <li className={classes.listItem}>
               <strong>后端：</strong>
@@ -190,7 +207,7 @@ const App = () => {
 
       <section className={classes.section}>
         <h2 className={classes.sectionTitle}>教育经历</h2>
-        <AnimatedCard>
+        <AnimatedCard disableAnimation={isMobileDevice}>
           <div className={classes.itemHeader}>
             <span className={classes.itemTitle}>
               <img src="/whu.svg" alt="武汉大学校徽" className={classes.icon} />
@@ -204,7 +221,7 @@ const App = () => {
 
       <section className={classes.section}>
         <h2 className={classes.sectionTitle}>工作经历</h2>
-        <AnimatedCard>
+        <AnimatedCard disableAnimation={isMobileDevice}>
           <div className={classes.itemHeader}>
             <span className={classes.itemTitle}>
               <img src="/billing.png" alt="腾讯TEG" className={classes.icon} />
@@ -230,7 +247,7 @@ const App = () => {
 
       <section className={classes.section}>
         <h2 className={classes.sectionTitle}>在校奖项</h2>
-        <AnimatedCard>
+        <AnimatedCard disableAnimation={isMobileDevice}>
           <div className={classes.itemHeader}>
             <span className={classes.itemTitle}>2025年网络技术挑战赛 A-ST赛项 全国三等奖</span>
             <span className={classes.itemDate}>2025.08</span>
@@ -253,7 +270,7 @@ const App = () => {
 
       <section className={classes.section}>
         <h2 className={classes.sectionTitle}>个人项目经历</h2>
-        <AnimatedCard>
+        <AnimatedCard disableAnimation={isMobileDevice}>
           <div className={classes.itemHeader}>
             <span className={classes.itemTitle}>私密图纸音乐房间</span>
             <span className={classes.itemDate}>2025.01 - 2025.02</span>
