@@ -213,7 +213,7 @@ const App = () => {
               <img src="/whu.svg" alt="武汉大学校徽" className={classes.icon} />
               武汉大学，本科
             </span>
-            <span className={classes.itemDate}>2022.09 ~ 至今</span>
+            <span className={classes.itemDate}>2022.09 ~ 2026.06</span>
           </div>
           <div className={classes.subHeader}>主修专业 信息安全 GPA 3.79/4.0</div>
         </AnimatedCard>
@@ -227,7 +227,7 @@ const App = () => {
               <img src="/billing.png" alt="腾讯TEG" className={classes.icon} />
               腾讯
             </span>
-            <span className={classes.itemDate}>2025.06 ~ 至今</span>
+            <span className={classes.itemDate}>2025.06 ~ 2026.02</span>
           </div>
           <div className={classes.subHeader}>腾讯TEG计费平台部增值应用组前端开发实习生</div>
           <ul className={classes.description}>
